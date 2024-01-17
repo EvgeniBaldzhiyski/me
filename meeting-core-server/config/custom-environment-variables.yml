@@ -1,0 +1,190 @@
+socketServerPort: APP_SOCKETSERVERPORT
+environment: APP_ENVIRONMENT
+allowedOrigins: APP_ALLOWEDORIGINS
+appUrl: APP_URL
+assetsUrl: APP_ASSETSURL
+logLevel: APP_LOGLEVEL
+adminConsole:
+  allowedIPs:
+    __name: APP_ADMINCONSOLE_ALLOWEDIPS
+    __format: 'yaml'
+  credentials:
+    __name: APP_ADMINCONSOLE_CREDENTIALS
+    __format: 'yaml'
+
+socketServerPortAuthorization:
+  version: APP_JWTAUTH_VERSION
+  jwksUri: APP_JWTAUTH_JWKS_URI
+  audience: APP_AUTH_AUDIENCE
+  publicKey: APP_JWTAUTH_KEY
+  activate:
+    __name: APP_AUTH_STRATEGY_ACTIVE
+    __format: 'yaml'
+  wellKnownConfig: APP_AUTH_WELL_CONFIG_URL
+  ghostUserClient:
+    clientId: APP_AUTH_GHOST_CLIENT_ID
+    clientSecret: APP_AUTH_GHOST_CLIENT_SECRET
+    scope: APP_AUTH_GHOST_CLIENT_SCOPE
+    audience: APP_AUTH_GHOST_CLIENT_AUDIENCE
+
+apiServerHost: APP_APISERVERHOST
+apiServerToken: APP_APISERVERTOKEN
+apiServerProtocol: APP_APISERVERPROTOCOL
+apis:
+  messages:
+    accessToken: APP_APIS_MESSAGES_ACCESSTOKEN
+    protocol: APP_APIS_MESSAGES_PROTOCOL
+    hostname: APP_APIS_MESSAGES_HOSTNAME
+    port: APP_APIS_MESSAGES_PORT
+    pathname: APP_APIS_MESSAGES_PATHNAME
+  core:
+    accessToken: APP_APIS_CORE_ACCESSTOKEN
+    protocol: APP_APIS_CORE_PROTOCOL
+    hostname: APP_APIS_CORE_HOSTNAME
+    port: APP_APIS_CORE_PORT
+    pathname: APP_APIS_CORE_PATHNAME
+
+mongoDB:
+  host: APP_MONGODB_HOST
+  port: APP_MONGODB_PORT
+  username: APP_MONGODB_USERNAME
+  password: APP_MONGODB_PASSWORD
+  db:
+    default: APP_MONGODB_DB_DEFAULT
+  exitIfConnectionFails:
+    __name: APP_EXIT_IF_CONNECTION_FAILS
+    __format: 'yaml'
+  options:
+    poolSize: APP_MONGODB_OPTIONS_POOLSIZE
+    tls:
+      __name: APP_MONGODB_OPTIONS_TLS
+      __format: 'yaml'
+    tlsCAFile: APP_MONGODB_OPTIONS_TLSCAFILE
+
+sut:
+  enabled:
+    __name: APP_SUT_ENABLED
+    __format: 'yaml'
+
+s3:
+  enabled:
+    __name: APP_S3_ENABLED
+    __format: 'yaml'
+  bucket: APP_S3_BUCKET
+  prefix: APP_S3_PREFIX
+  accessKeyId: APP_S3_AWS_ACCESSKEYID
+  secretAccessKey: APP_S3_AWS_SECRETACCESSKEY
+  notesBucketName: APP_S3_NOTES_BUCKET_NAME
+
+rabbitmq:
+  username: APP_RABBITMQ_USERNAME
+  password: APP_RABBITMQ_PASSWORD
+  hostname: APP_RABBITMQ_HOST
+  port: APP_RABBITMQ_PORT
+
+sns:
+  topicArn: APP_SNS_TOPIC_ARN
+  awsConfig:
+    region: APP_SNS_REGION
+    accessKeyId: APP_SNS_ACCESS_KEY_ID
+    secretAccessKey: APP_SNS_SECRET_ACCESS_KEY
+
+enableEventLog:
+  __name: APP_ENABLE_EVENT_LOG
+  __format: 'yaml'
+
+boxSystem:
+  transcribe:
+    initialRetryInterval: APP_TRANSCRIBE_WORKER_BOX_INITIAL_RETRY_INTERVAL
+    exchangeName: APP_TRANSCRIBE_WORKER_BOX_EXCHANGE
+    queueName: APP_TRANSCRIBE_WORKER_BOX_QUEUE_NAME
+    routingKey: APP_TRANSCRIBE_WORKER_BOX_ROUTING_KEY
+  ssr:
+    initialRetryInterval: APP_SSR_WORKER_BOX_INITIAL_RETRY_INTERVAL
+    exchangeName: APP_SSR_WORKER_BOX_EXCHANGE
+    queueName: APP_SSR_WORKER_BOX_QUEUE_NAME
+    routingKey: APP_SSR_WORKER_BOX_ROUTING_KEY
+
+audioMixerWorkerConfig:
+  exchangeName:
+    __name: APP_MIXER_WORKER_EXCHANGE
+    __format: 'yaml'
+  queueName:
+    __name: APP_MIXER_WORKER_QUEUE_NAME
+    __format: 'yaml'
+  routingKey:
+    __name: APP_MIXER_WORKER_ROUTING_KEY
+    __format: 'yaml'
+
+pwrWorkerConfig:
+  exchangeName:
+    __name: APP_PWR_WORKER_EXCHANGE
+    __format: 'yaml'
+  queueName:
+    __name: APP_PWR_WORKER_QUEUE_NAME
+    __format: 'yaml'
+  routingKey:
+    __name: APP_PWR_WORKER_ROUTING_KEY
+    __format: 'yaml'
+
+pdfTaskQueue:
+  exchangeName:
+    __name: APP_PDF_WORKER_EXCHANGE
+    __format: 'yaml'
+  queueName:
+    __name: APP_PDF_WORKER_QUEUE_NAME
+    __format: 'yaml'
+  routingKey:
+    __name: APP_PDF_WORKER_ROUTING_KEY
+    __format: 'yaml'
+
+auditLog:
+  __name: ENABLE_AUDIT_LOG
+  __format: 'yaml'
+
+consul:
+  server: APP_CONSUL_SERVER_HOST
+
+serviceRegistry:
+  enabled:
+    __name: APP_SERVICE_REGISTRY_ENABLED
+    __format: 'yaml'
+  serviceIp: APP_SERVICE_REGISTRY_SERVICE_IP
+  serviceInstance: APP_SERVICE_REGISTRY_SERVICE_INSTANCE
+  serviceName: APP_SERVICE_REGISTRY_SERVICE_NAME
+  serviceRegistry: APP_SERVICE_REGISTRY_HEALTH_CHECK_INTERVAL
+  healthCheckTimeout: APP_SERVICE_REGISTRY_HEALTH_CHECK_TIMEOUT
+  autoDeregisterTime: APP_SERVICE_REGISTRY_DEREGISTER_TIME
+  autoReregisterTime: APP_SERVICE_REGISTRY_REREGISTER_TIME
+  disableEvents:
+    __name: APP_SERVICE_REGISTRY_DISABLE_EVENTS
+    __format: 'yaml'
+  autoReregisterRetriesCount: APP_SERVICE_REGISTRY_REREGISTER_RETRIES_COUNT
+  workloadName: APP_SERVICE_REGISTRY_WORKLOAD_NAME
+
+openIdClient:
+  timeout: OPENIDCLIENT_TIMEOUT
+  agentOptions:
+    keepAlive:
+      __name: OPENIDCLIENT_AGENTOPTIONS_KEEPALIVE
+      __format: 'yaml'
+    maxSockets: OPENIDCLIENT_AGENTOPTIONS_MAXSOCKETS
+
+terminationGracePeriodSeconds: APP_TERMINATION_GRACE_PERIOD_SECONDS
+
+axios:
+  noteMaxContentLength: NOTE_AXIOS_MAX_CONTENT_LENGTH
+  noteMaxBodyLength: NOTE_AXIOS_MAX_BODY_LENGTH
+
+enableKafkaLog:
+  __name: APP_ENABLE_KAFKA_LOG
+  __format: 'yaml'
+
+kafka:
+  clientId: APP_KAFKA_CLIENT_ID
+  topicsPrefix: APP_KAFKA_TOPICS_PREFIX
+  bootstrapServers: APP_KAFKA_BOOTSTRAP_SERVERS
+
+grpc:
+  address: SOCKET_SERVER_GRPC_ADDRESS
+  port: SOCKET_SERVER_GRPC_PORT

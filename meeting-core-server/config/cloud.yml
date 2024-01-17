@@ -1,0 +1,48 @@
+# use for NODE_CONFIG_ENV=cloud
+socketServerName: meetingCoreServerDev
+allowedOrigins: https://app.dev.domain.com
+apiServerProtocol: http
+apiServerPort: ''
+apiServerHost: core-api-dev # use the Internal K8S Networking short-cut
+apiServerEndpoint: '/api'
+apis:
+  messages:
+    accessToken: <secret here>
+    protocol: http
+    hostname: messages-api-dev
+    port: ''
+    pathname: '/api/messages'
+  core:
+    accessToken: <secret here>
+    protocol: http
+    hostname: core-api-dev
+    port: ''
+    pathname: '/api'
+appUrl: https://app.dev.domain.com
+assetsUrl: https://app-cdn.dev.domain.com
+environment: dev
+logFormat: json
+logLevel: info
+mongoDB:
+  host: <host here>
+  port: 27017
+  username: <secret here>
+  password: <secret here>
+  options:
+    tls: true
+    tlsCAFile: resources/rds-combined-ca-bundle.pem
+rabbitmq:
+  username: <secret here>
+  password: <secret here>
+  hostname: rabbitmq-dev
+  port: 5672
+s3:
+  bucket: 
+  prefix: 51-bors-assets
+  accessKeyId: 
+  secretAccessKey:
+serviceRegistry:
+  enabled: true
+  serviceIp: null # leave blank to use ip()
+  serviceInstance: null # leave blank or null to use hostname(), e.g. `socket-server-0`
+  serviceName: null # leave blank or null to use hostname().replace(/\d+$/, '') e.g. `socket-server`

@@ -1,0 +1,16 @@
+# use for NODE_CONFIG_ENV=development
+socketServerName: meetingCoreServerDevelopment
+allowedOrigins: https://app.dev.domain.com
+apiServerProtocol: https
+apiServerHost: core-api.dev.domain.com
+apiServerPort: ''
+apiServerEndpoint: '/api'
+appUrl: https://app.dev.domain.com
+assetsUrl: https://app-cdn.dev.domain.com
+mongoDB:
+  options:
+    # Use extended timeouts for Local Development Environment
+    # workaround for flacky MongoDB connections
+    socketTimeoutMS: 3600000
+    connectTimeoutMS: 3600000
+    serverSelectionTimeoutMS: 3600000

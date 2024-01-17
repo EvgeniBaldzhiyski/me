@@ -1,0 +1,17 @@
+# use for NODE_CONFIG_ENV=dc
+socketServerName: meetingCoreServerDc
+allowedOrigins: https://app.local.domain.com
+appUrl: https://app.local.domain.com
+assetsUrl: https://app-cdn.local.domain.com
+rabbitmq:
+  username: guest
+  password: guest
+  hostname: rabbitmq-server
+  port: 5672
+mongoDB:
+  options:
+    # Use extended timeouts for Local Development Environment
+    # workaround for flacky MongoDB connections
+    socketTimeoutMS: 3600000
+    connectTimeoutMS: 3600000
+    serverSelectionTimeoutMS: 3600000

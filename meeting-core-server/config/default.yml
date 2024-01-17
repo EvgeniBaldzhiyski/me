@@ -1,0 +1,251 @@
+socketServerPort: 5050
+socketServerName: meetingCoreServerDev
+socketServerPublicDir: "./public"
+apiServerProtocol: https
+apiServerHost: core-api.local.domain.com
+apiServerPort: ''
+apiServerEndpoint: '/api'
+apiServerToken:
+apis:
+  messages:
+    protocol: https
+    hostname: app.local.domain.com
+    port: ''
+    pathname: '/api/messages'
+    accessToken:
+  core:
+    protocol: https
+    hostname: core-api.local.domain.com
+    port: ''
+    pathname: '/api'
+    accessToken:
+appUrl: http://localhost:4200
+assetsUrl: http://localhost:4200/assets
+tempDirectoryPath: "./temp"
+allowedOrigins: http://localhost:4200
+environment: local
+logLevel: debug
+logFormat: plain #|json
+systemUserAccountId: 00000000-0000-0000-0000-000000000001
+socketServerConfig:
+  roomKeepAlive: 120
+  userKeepAlive: 120
+  userDisconnectDelay: 5 # in seconds
+  userIdleDelay: 120  # in seconds
+  waitPresenterTimeout: 900 # second
+  keepAliveInterval: 25 # second - both for legacy and socket.io
+  keepAliveTimeout: 30 # second - both for legacy and socket.io
+  keepAliveDetector: true # only legacy
+mixer:
+  startTimeout: 180
+socketServerPortAuthorization:
+  activate: true
+  audience: meeting-core-server,auth-code-client,https://app.local.domain.com,open-session-client
+  version:
+  publicKey: LS0tLS1CRUdJTiBQVUJMSUMgS0VZLS0tLS0KTUlJQklqQU5CZ2txaGtpRzl3MEJBUUVGQUFPQ0FROEFNSUlCQ2dLQ0FRRUF6NjJUMVd6S1dtb285NnRRK3AyMApUZUVYZDdyc0VyQ2Y5QkE3d0hsZ05WRWRQdjB1TzFlcE5zSFhyYjJ4emt4dEF1SVkwdk5wckQwS1VaZmpBYjNiCkZTdng5aDBNN1MzNUV3NWpoVDFNT0MxTDh0MFdoRkZKZEdJUzM5cFJadEIzR1JIN05id3B1QytxMFdtME5uZnMKdFhocnlLKzNnU0txNWdDSko0ODR5RHluNEYvS3ljRHhOcWtySXRvcXR0eHV6UFRhLzM4dW1SL3FNUVJjejN2WApMYWs1ekZXZDdvMVJrZUtaZHowZDlSa2xIODFGYS9CRE1zMURmZHAwWUwyZmt1QnVkV2V6ZkV4R0hneUg0elpoCkpsUk1HdTAyMFhpQkYvQXpDcWI2SFpjbThqN3VuNDB6U0g1TjRjOWJMYVdQNjFSUlpoNXZJV3hiVGdNYnBPWlUKWVFJREFRQUIKLS0tLS1FTkQgUFVCTElDIEtFWS0tLS0tCg==
+  jwksUri: https://app.local.domain.com/oauth/.well-known/jwks.json
+  wellKnownConfig: https://app.local.domain.com/oauth/.well-known/openid-configuration
+  ghostUserClient:
+    clientId:
+    clientSecret:
+    scope: ghost-user
+    audience: https://app.local.domain.com
+
+sut:
+  enabled: false
+adminConsole:
+  allowedIPs:
+
+s3:
+  enabled: true
+  bucket: compani-name-ssr-dev
+  notesBucketName: compani-name-notes-images-dev
+  prefix: 51-bors-assets
+  accessKeyId:
+  secretAccessKey:
+  presignedUrlExpiresIn: 180
+mongoDB:
+  host: sock-dev-db.cluster-cznf1nxc1qac.us-east-1.docdb.amazonaws.com
+  port: 27017
+  username:
+  password:
+  options:
+    poolSize: 40
+    tls: true
+    tlsCAFile: resources/rds-combined-ca-bundle.pem
+  db:
+    default: meeting-core-dev
+  exitIfConnectionFails: true
+
+webrtcTurn:
+  tokensTTL: 7200
+  refreshBeforeTTL: 600
+  authUsr:
+  authPass:
+
+insights:
+  server:
+    host: 0.0.0.0
+    port: 5051
+
+rabbitmq:
+  username: guest
+  password: guest
+  hostname: localhost
+  port: 5672
+
+pdfTaskQueue:
+  exchangeName: task-exchange
+  queueName: pdf-worker-queue
+  routingKey: pdf-work
+
+disableBringBackPDF: false
+oldBorManager: false
+
+autopromoteLead: false
+
+metrics:
+  prefix: meeting-core_server_
+
+sns:
+  topicArn: arn:aws:sns:us-east-1:153179867887:AttendanceEventsTopic_dev
+  awsConfig:
+    region: us-east-1
+    accessKeyId:
+    secretAccessKey:
+  options:
+    apiVersion: '2010-03-31'
+
+enableEventLog: true
+
+audioMixerWorkerConfig:
+  exchangeName: task-exchange
+  queueName: mixer-worker-queue
+  routingKey: mixer-work
+
+pwrWorkerConfig:
+  exchangeName: task-exchange
+  queueName: ffmpeg-worker-queue
+  routingKey: ffmpeg-work
+
+boxSystem:
+  transcribe:
+    # use >=5m given in case K8S Node needs to be brought to life it could take about that time
+    # starting attempts
+    startTimeout: 900 # in seconds = 15m
+    maxStartingAttempts: 1
+    # rabbitmq attempts
+    maxRabbitmqInitFailedAttempts: 4
+    rabbitmqRetryInterval: 30 # in seconds = 2m (4*300)
+    # token generation attempts
+    maxTokenGenerationFailedAttempts: 4
+    tokenGenerationRetryInterval: 30 # in seconds = 2m (4*300)
+    # job failed attempts
+    maxWorkerFailedAttempts: 5
+    # rabbitmq configuration
+    exchangeName: task-exchange
+    queueName: transcribe-worker-queue
+    routingKey: transcribe-work
+  ssr:
+    # use >=5m given in case K8S Node needs to be brought to life it could take about that time
+    # starting attempts
+    startTimeout: 900 # in seconds = 15m
+    maxStartingAttempts: 1
+    # rabbitmq attempts
+    maxRabbitmqInitFailedAttempts: 4
+    rabbitmqRetryInterval: 30 # in seconds = 2m (4*300)
+    # token generation attempts
+    maxTokenGenerationFailedAttempts: 4
+    tokenGenerationRetryInterval: 30 # in seconds = 2m (4*300)
+    # job failed attempts
+    maxWorkerFailedAttempts: 5
+    # rabbitmq configuration
+    exchangeName: task-exchange
+    queueName: ssr-worker-queue
+    routingKey: ssr-work
+  voice:
+    # use >=5m given in case K8S Node needs to be brought to life it could take about that time
+    # starting attempts
+    startTimeout: 900 # in seconds = 15m
+    maxStartingAttempts: 1
+    # rabbitmq attempts
+    maxRabbitmqInitFailedAttempts: 4
+    rabbitmqRetryInterval: 30 # in seconds = 2m (4*300)
+    # token generation attempts
+    maxTokenGenerationFailedAttempts: 4
+    tokenGenerationRetryInterval: 30 # in seconds = 2m (4*300)
+    # job failed attempts
+    maxWorkerFailedAttempts: 5
+    # rabbitmq configuration
+    exchangeName: task-exchange
+    queueName: voice-worker-queue
+    routingKey: voice-work
+    resetCallMeState: 15000
+
+auditLog: true
+
+consul:
+  server: consul-server
+
+serviceRegistry:
+  enabled: true
+  disableEvents: false
+  serviceIp: # leave blank to use ip()
+  serviceInstance: # leave blank to use hostname(), e.g. `socket-server-0`
+  serviceName: ss # leave blank to use hostname().replace(/\d+$/, '') e.g. `socket-server`
+  healthCheckInterval: '30s'
+  healthCheckTimeout: '20s'
+  autoDeregisterTime: 45 # deregister after 45 seconds without active meeting
+  autoReregisterTime: 60000 # milliseconds; it should be a little more than "healthCheckInterval" + "healthCheckTimeout" + some buffer e.g. 10s
+  initRegisterTime: 120000 # milliseconds; it should be double or more the "autoReregisterTime" time
+  autoReregisterRetriesCount: 3 # number of reregister retries before checking for active connections and before marking the instance unhealthy
+  workloadName: mid
+
+openIdClient:
+  timeout: 15000
+  agentOptions:
+    keepAlive: true
+    maxSockets: Infinity
+
+terminationGracePeriodSeconds: 43200 # 12h
+
+axios:
+  noteMaxContentLength: 15000000 # Around 15Mb limit. We have 10Mb on a picture & 5Mb on a message
+  noteMaxBodyLength: 15000000 # Around 15Mb limit. We have 10Mb on a picture & 5Mb on a message
+
+kafka:
+  clientId: meeting-core-server
+  topicsPrefix: local
+  connectionTimeout: 3000
+  authenticationTimeout: 1000
+  reauthenticationThreshold: 10000
+  bootstrapServers: bootstrap.kafka.dev.domain.com:443 #CSV list
+  ssl:
+    enabled: true
+    rejectUnauthorized: false
+    caPath: auth/kafka/ca.crt
+  auth:
+    userCertPath: auth/kafka/user.crt
+    userKey: auth/kafka/user.key
+
+enableKafkaLog: true
+
+grpc:
+  address: '0.0.0.0'
+  port: 5009
+  keepalive:
+    keepaliveTimeMs: 90_000
+    keepaliveTimeoutMs: 5_000
+    keepalivePermitWithoutCalls: 1
+    http2MaxPingsWithoutData: 0
+    http2MinPingIntervalWithoutDataMs: 180_000
+    http2MaxPingStrikes: 2
+  channelOptions:
+    'grpc.keepalive_permit_without_calls': 1
+    'grpc.http2.max_pings_without_data': 2
+
+internalCIDRs:
+  # Default local CIDRs (local development environment)
+  # loopback:
+  - 127.0.0.1/8
+  - ::1/128

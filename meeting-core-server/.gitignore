@@ -1,0 +1,11 @@
+node_modules
+dist
+npm-debug.log
+# socket-server logs
+logs
+.npmrc
+# socket-server temp directory
+temp
+.history
+.npmrc
+# remove this comment as it is here to just trigger the CI build :(

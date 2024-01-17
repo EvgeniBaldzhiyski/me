@@ -1,0 +1,23 @@
+socketServerPort: 5001
+
+socketServerPortAuthorization:
+  activate: false
+  audience: meeting-core-server
+  version:
+  publicKey:
+
+sut:
+  enabled: false
+
+serviceRegistry:
+  enabled: true
+  serviceIp: 1.2.3.4 # leave blank to use ip()
+  serviceInstance: meeting-core-server-123 # leave blank to use hostname()
+  serviceName: meeting-core-server # leave blank to use hostname().replace(/\d+$/, '')
+  healthCheckInterval: '30s'
+  autoDeregisterTime: '14s' # 30s health check time + 14s timeout = 44s maximum life
+  autoReregisterTime: 40000 # milliseconds; it should be a little more than "healthCheckInterval"
+
+boxSystem:
+  voice:
+    resetCallMeState: 1

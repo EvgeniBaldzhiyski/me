@@ -1,0 +1,23 @@
+export enum MeetingMessagingCommands {
+  ATTENDEE_JOIN = 'meetingMessagingAttendeeJoin',
+  ATTENDEE_REMOVE = 'meetingMessagingAttendeeRemove',
+  ATTENDEE_UPDATE = 'meetingMessagingAttendeeUpdate',
+  ATTENDEES_ASSIGN_TO_ROOM = 'meetingAttendeeAssignToRoom',
+  ATTENDEES_ASSIGN_REMOVE = 'meetingAttendeeAssignRemove',
+  ATTENDEE_MAKE_LEAD = 'meetingAttendeeMakeLead',
+
+  ROOM_CREATE = 'adminCmdCreateRoom',
+  ROOM_ADD = 'adminCmdAddRoom',
+  ROOM_EDIT = 'adminCmdEditRoom',
+  ROOM_PARTIAL_EDIT = 'adminCmdPartialEditRoom',
+  ROOM_REMOVE = 'adminCmdRemoveRoom',
+  ROOM_REMOVE_IN_PROGRESS = 'adminCmdRemoveRoomInProgress',
+  ROOM_REMOVE_FAILED = 'adminCmdRemoveRoomFailed',
+  ROOM_RELOAD = 'adminCmdReloadRoom',
+  ROOM_ADD_ATTENDEE = 'adminCmdAddAttRoom',
+  ROOM_MOVE_ATTENDEE = 'adminCmdMoveAttRoom',
+  ROOM_BRINGBACK_ATTENDEES = 'adminCmdBringbackAttRoom',
+  ROOM_BRINGBACK_PDFS = 'adminCmdBringbackPdfs',
+  BOR_MANAGER_STATE_CHANGE = 'adminBorManagerStateChange',
+  ASSET_UPDATE = 'ASSET_UPDATE',
+}

@@ -1,0 +1,12 @@
+# copy / symlink the config below in `local.yml` and look for "uncomment to use local mongodb" in docker-compose folder
+mongoDB:
+  host: mongo-server
+  port: 27017
+  username:
+  password:
+  db:
+    default: meeting-core
+  options:
+    poolSize: 40
+    ssl: false
+    sslCA: # resources/rds-combined-ca-bundle.pem
