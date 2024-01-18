@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "update_url": "https://clients2.google.com/service/update2/crx",
+  "name": "WORKisROUND",
+  "description": "Enables users to quickly and effortlessly fill in extensive forms on specific government websites with pre-prepared data.",
+  "homepage_url": "https://app.workisround.eu/",
+  "version": "2.0.1",
+  "icons": {
+    "48": "images/favicon.png"
+  },
+
+  "action": {
+    "default_icon": "images/favicon.png",
+    "default_popup": "pages/postings.html",
+    "default_title": "WORKisROUND"
+  },
+
+  "background": {
+    "service_worker": "js/background.js"
+  },
+
+  "permissions": ["tabs", "scripting"],
+
+  "content_scripts": [],
+  "host_permissions": []
+}

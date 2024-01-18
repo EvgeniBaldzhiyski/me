@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Work Is Round - Posting</title>
+
+  <link rel="stylesheet" type="text/css" href="../libs/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="../libs/fontAwesome/all.min.css" />
+  <link rel="stylesheet" type="text/css" href="../libs/DataTables/datatables.min.css" />
+  <link rel="stylesheet" type="text/css" href="../styles/application.css"/>
+</head>
+
+<body>
+  <div id="loadingBoard" class="loading-board">
+    <div class="d-flex justify-content-center align-items-center">
+      <img src="../images/ripple.gif"/>
+    </div>
+  </div>
+
+  <div class="page-content-wrapper">
+    <div class="d-flex justify-content-between align-items-center button-bar">
+      <div class="d-flex align-items-end">
+        <img src="../images/logo.svg" class="logo1" />
+        <strong class="build-version-box" id="build-version-box"></strong>
+      </div>
+
+      <button class="btn btn-danger" id="logout">
+        <i class="fas fa-sign-out-alt"></i> Log out
+      </button>
+    </div>
+    
+    <hr />
+
+    <label class="element-label">Posting information:</label>
+    
+    <div class="content-border">
+      <div>
+        <strong>Posting ID:</strong>
+        <span id="ismIdField" style="color:darkred"></span>
+      </div>
+      <div class="posting-data-box">
+        <div>
+          <strong>From:</strong>
+          <span id="ismFrom"  style="color:darkgreen"></span> 
+        </div>
+        <div>
+          <strong>To:</strong>
+          <span id="ismTo" style="color:darkblue"></span>
+        </div>
+        <div>
+          <strong>Start Date:</strong>
+          <span id="ismStartDateField" style="color:darkred"></span>
+        </div>
+        <div>
+          <strong>End Date:</strong>
+          <span id="ismEndDateField" style="color:darkred"></span>
+        </div>
+      </div>
+      <div>
+        <strong>Posting Company Name:</strong>
+        <span id="ismPostingCompanyName" style="color:darkgreen"></span>
+      </div>
+      <div>
+        <strong>Business Sector:</strong>
+        <span id="ismBusinessSectorField" style="color:darkolivegreen"></span>
+      </div>
+    </div>
+    
+    <hr />   
+    
+    <label class="element-label">Additional information:</label>
+    <div class="content-border" id="representativeText"></div>
+    
+    <hr />
+
+    <label class="element-label">Please select the employees to be posted:</label>
+
+    <table id="employees_list" class="table table-striped table-sortable">
+      <thead>
+        <tr class="clickable-row">
+          <th>
+            <div class="checkbox-wrapper"><input type="checkbox" id="checkAll"/></div>
+          </th>
+          <th class="sorting_asc">First Name</th>
+          <th class="sorting">Last Name</th>
+          <th class="sorting">Date of birth</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Dynamic content -->
+      </tbody>
+    </table>
+
+    <div class="d-flex justify-content-end button-bar">
+      <button id="backBtn" class="btn btn-secondary">
+        <i class="fas fa-sign-out-alt fa-rotate-180"></i> Back
+      </button>
+      <button id="fillBtn" class="btn btn-success">
+        <i class="fas fa-pencil-alt"></i> Fill
+      </button>
+    </div>
+  </div>
+</body>
+
+<!-- Scripts -->
+<script src="../libs/jquery-3.4.1.min.js"></script>
+<script src="../libs/bootstrap/js/bootstrap.min.js"></script>
+<!-- Font Awesome -->
+<script src="../libs/fontAwesome/all.min.js"></script>
+<!-- DataTables -->
+<script src="../libs/DataTables/datatables.min.js"></script>
+<script src="../libs/jquery.noty.packaged.min.js"></script>
+<script src="../libs/noty.bootstrap.js"></script>
+
+<script type="module" src="../js/posting.js"></script>
+
+</html>

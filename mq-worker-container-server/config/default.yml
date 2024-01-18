@@ -1,0 +1,115 @@
+service:
+  name: base-box
+  logLevel: debug
+  mediaSoupLevel: 1
+  logType: json
+  inspectMedia: false
+  openTabTimeout: 30000
+  initializedEventTimeout: 20000 # in milliseconds - first emitted event
+  appReadyEventTimeout: 30000 # in milliseconds - second emitted event = initializedEventTimeout + desired Value
+  connectionStateTimeout: 40000 # in milliseconds - third emitted event -= initializedEventTimeout + appReadyEventTimeout + desired Value
+  aliveEventTimeout: 20000 # in milliseconds
+  documentDeliveryTimeout: 7000 # in milliseconds
+  display:
+    width: 640
+    height: 480
+    bits: 8
+  pidSource: /tmp/PROCESS_PID
+
+showEnvVars: true
+
+ssr:
+  minLenght: 10 # in seconds
+  maxLength: 120 # in minutes
+  resourceStorage: /tmp
+  mimeType: webm
+  minVideoLength: 10
+  ffmpegTimeout: 300 # in seconds
+  maxExecutedTasks: 10
+
+taskQueue:
+  exchangeName: task-exchange
+  queueName: base-worker-queue
+  routingKey: base-work
+  maxInFlight: 1
+  # @deprecated
+  autorecovering: false
+
+metrics:
+  capacityGauge: base_worker_capacity
+  loadGauge: base_worker_load
+  totalCapacityGauge: base_worker_total_capacity
+  runningSessionsGauge: base_worker_running_sessions
+
+aws:
+  transcribe:
+    accessKeyId: AKIASHKR3JLXUDVKMWWZ
+    secretAccessKey: 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
+    profile: dev-core@jig-dev
+    region: us-east-1
+    languageCode: en-US
+    mediaEncoding: pcm
+    mediaSampleRateHertz: 8000
+    filterVocabularyName: JigsawBadwords
+    vocabularyName: JigsawMathAndReadingVocabulary
+
+  s3:
+    bucket: jigsaw-ssr-dev
+    prefix: 52-ssr/
+    debugPrefix: debug/
+    settings:
+      credentials:
+        accessKeyId: AKIASHKR3JLXUDVKMWWZ
+        secretAccessKey: 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
+      region: us-east-1
+      maxAttempts: 7
+
+auth:
+  wellKnown: https://app.local.jigsawinteractive.com/oauth/.well-known/openid-configuration
+  clientId: ghost-client
+  clientSecret: ghost-client-secret
+  scope: ghost-user
+  audience: https://app.local.jigsawinteractive.com
+
+mediaServer:
+  url: wss://ms.local.jigsawinteractive.com
+
+coreApi:
+  # NOTE: For non-LDE we use completely internal service communication e.g. `http://core-api-<ns>`!!!
+  protocol: https
+  hostname: core-api.local.jigsawinteractive.com
+  port: ""
+  pathname: "/api"
+  maxRetryAttempts: 3
+  token: # TODO: Prefer using Internal only endpoint with IP Authentication or in last resort JWT Internal Authentication
+
+rabbit:
+  hostname: localhost
+  username: guest
+  password: guest
+  port: 5672
+  maxRetryTime: 120000 # 2 min
+
+insights:
+  server:
+    host: 0.0.0.0
+    port: 5051
+
+kafka:
+  clientId: jigsaw-base-box
+  transcribeTopic: fa-transcribe
+  topicsPrefix: local
+  connectionTimeout: 3000
+  authenticationTimeout: 1000
+  reauthenticationThreshold: 10000
+  bootstrapServers: bootstrap.kafka.dev.jigsawinteractive.net:443 #CSV list
+  ssl:
+    enabled: true
+    rejectUnauthorized: false
+    caPath: auth/kafka/ca.crt
+  auth:
+    userCertPath: auth/kafka/user.crt
+    userKey: auth/kafka/user.key
+
+
+enableKafkaLog: true

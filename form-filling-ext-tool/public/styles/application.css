@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700&subset=latin-ext');
+
+* {
+  font-size: 10pt;
+}
+
+body {
+  font-family: Lato, 'Segoe UI', 'Lucida Grande', Tahoma, sans-serif;
+  width: 700px !important;    
+}
+
+hr {
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+
+p {
+  margin-bottom: 5px;
+}
+
+.build-version-box {
+  margin-left: 6px;
+  font-size: 10px;
+}
+
+.logo {
+  max-width: 350px;
+  margin: auto;
+  display: block;
+  padding-top: 30px;
+  user-select: none;
+}
+
+.logo1 {
+  max-width: 150px;
+  display: block;
+  margin: 5px 0;
+  user-select: none;
+}
+
+.dataTables_wrapper {
+  border: 1px solid #0c5d8b;
+  margin-bottom: 5px;
+  widows: 100%;
+}
+
+.content-border {
+  border:1px; 
+  border-style:solid; 
+  border-color:#6dbe7a;
+  padding-left: 9px;
+  max-height: 68px;
+  overflow: auto;
+}
+
+#loginBtn {
+  margin: 20px 0 !important;
+  display: block !important;
+}
+
+.form-group {
+  margin: 0 !important;
+  margin-top: 5px !important;
+}
+
+.alert {
+  display: none;
+  margin-top: 20px;
+}
+
+#loading {
+  display: none;
+  width: 100%;
+  height: 200px;
+  position: absolute;
+  top: 150px;
+  left: 0;
+  right: 0;
+  z-index: 121;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+#loading img {
+  margin: auto;
+  display: block;
+}
+
+#user-firm {
+  font-size: 111%;
+  font-weight: bold;
+  color: #0c5d8b;
+}
+
+#scrollContent{
+  overflow: scroll;
+  width: 100%;
+  height: 300px;
+}
+
+.loading-board {
+  position: absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height: 100%;
+  background: rgba(255,255,255,0.6);
+  z-index: 255;
+  /* display: none */
+}
+
+.loading-board div {
+  width:100%;
+  height: 100%;
+}
+
+.loading-board img {
+  min-width: 40%;
+}
+
+.display-none {
+  display: none;
+}
+
+.button-bar {
+  margin-bottom: 5px;
+}
+
+.button-bar button {
+  margin-left: 4px
+}
+
+.login-title-bar {
+  text-align: center;
+  color: #6ec991;
+  margin-top: 20px;
+  user-select: none;
+}
+
+.element-label {
+  font-size:11pt;
+  font-weight: bold;
+}
+
+.page-content-wrapper {
+  margin: 5px 10px;
+}
+
+.posting-data-box {
+  display: flex;
+}
+.posting-data-box div {
+  margin-right: 20px;
+}
+.posting-data-box strong {
+  margin-right: 5px;
+}
+
+table.dataTable thead th {
+  padding: 6px 10px;
+}
+table.dataTable thead th .checkbox-wrapper {
+  line-height: 1.3;
+}
+table.dataTable tbody td {
+  padding: 4px 10px;
+}
+table.dataTable tbody td .checkbox-wrapper {
+  line-height: 0;
+}

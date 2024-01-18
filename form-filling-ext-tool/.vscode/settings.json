@@ -1,0 +1,60 @@
+{
+  "editor.tabSize": 2,
+  "editor.indentSize": "tabSize",
+  "editor.detectIndentation": false,
+  "editor.formatOnPaste": false,
+  "editor.formatOnSave": false,
+
+  "files.autoSave": "off",
+  
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[javascript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "prettier.singleQuote": true,
+	"prettier.printWidth": 100,
+  "prettier.jsxSingleQuote": true,
+  "cSpell.words": [
+    "Adresse",
+    "Anmerkungen",
+    "Anschrift",
+    "Ansprechperson",
+    "arbeit",
+    "Arbeitsverhaeltnis",
+    "Arbeitszeit",
+    "Auftragperson",
+    "Ausstellungsdatum",
+    "Bautaetigkeit",
+    "Beginn",
+    "Behoerde",
+    "Beilagen",
+    "Betrieb",
+    "Bundesland",
+    "Dauer",
+    "Ende",
+    "Geburtsdatum",
+    "Gegenstand",
+    "Geltungsdauer",
+    "Geschaeftszahl",
+    "Gewerbebefugnis",
+    "GruppeFlieszend",
+    "Hoehe",
+    "Orte",
+    "Seite",
+    "Seitenfolge",
+    "Sonstiges",
+    "Staatsbuergerschaft",
+    "SVNR",
+    "Taetigkeit",
+    "Traeger",
+    "Vorname",
+    "Vornamen",
+    "Zeitraum"
+  ]
+}

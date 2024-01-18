@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>app.local.jigsawinteractive.com</title>
+  </head>
+  <body>
+  <!--
+    // 1. is used to prevent initialization of the monitoring system on the NGINX SYSTEM PAGE
+    // 2. doesn't provide additional support for future dom changes or browser reloads on SAME URL. (monitoring system is initialized only ONCE!)
+
+    // Browser refreshes are not expected or if the occour they're going to be triggered by socket-server ex. Refresh Session Settings
+    // In that case flow is the following: END by stopping existing job and creating new one to be handled by different or same worker
+
+    // Details of the solution:
+    // app.local.jigsawinteractive.com or any domain with *.jigsawinteractive.com which is hidden behind NGINX is having System Page (document) [NOT CONFIGURABLE]
+    // This page is visible while NGINX is trying to fulfill a request (WHITE SCREEN)
+    // This page is delivered on the SAME CONNECTION while waiting for the actual Document
+  -->
+  </body>
+</html>

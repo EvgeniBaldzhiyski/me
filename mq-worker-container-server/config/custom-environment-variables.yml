@@ -1,0 +1,67 @@
+rabbit:
+  username: APP_RABBITMQ_USERNAME
+  password: APP_RABBITMQ_PASSWORD
+  hostname: APP_RABBITMQ_HOST
+  port: APP_RABBITMQ_PORT
+
+mediaServer:
+  url: APP_MS_HOST
+
+coreApi:
+  protocol: CORE_API_PROTOCOL
+  hostname: CORE_API_HOSTNAME
+  port: CORE_API_PORT
+  token: CORE_API_TOKEN
+
+service:
+  logLevel: SERVICE_LOGLEVEL
+  mediasoupLogLevel: MEDIASOUP_LOG_LEVEL
+  name: SERVICE_NAME
+  openTabTimeout: OPEN_TAB_TIMEOUT
+  display:
+    width: DISPLAY_WIDTH
+    height: DISPLAY_HEIGHT
+    bits: DISPLAY_BITS
+
+metrics:
+  capacityGauge: CAPACITY_GAUGE
+  loadGauge: LOAD_GAUGE
+  totalCapacityGauge: TOTAL_CAPACITY_GAUGE
+  runningSessionsGauge: RUNNING_SESSIONS_GAUGE
+
+taskQueue:
+  exchangeName: EXCHANGE
+  queueName: QUEUE_NAME
+  routingKey: ROUTING_KEY
+  autorecovering: AUTO_RECOVER
+
+aws:
+  transcribe:
+    accessKeyId: AWS_TRANSCRIBE_ACCESS_KEY_ID
+    secretAccessKey: AWS_TRANSCRIBE_SECRET_KEY_ID
+    region: AWS_TRANSCRIBE_REGION
+    languageCode: AWS_TRANSCRIBE_LANGUAGE_CODE
+    mediaEncoding: AWS_TRANSCRIBE_MEDIA_ENCODING
+    mediaSampleRateHertz: AWS_TRANSCRIBE_SAMPLE_RATE_HERTZ
+  s3:
+    bucket: AWS_S3_BUCKET
+    settings:
+      credentials:
+        accessKeyId: AWS_S3_ACCESSKEYID
+        secretAccessKey: AWS_S3_SECRETACCESSKEY
+      region: AWS_S3_REGION
+
+ssr:
+  minVideoLength: SSR_MIN_VIDEO_LENGTH
+  maxExecutedTasks: MAX_EXECUTED_TASKS
+  maxLength: SSR_MAX_VIDEO_LENGTH
+
+enableKafkaLog:
+  __name: APP_ENABLE_KAFKA_LOG
+  __format: "yaml"
+
+kafka:
+  clientId: APP_KAFKA_CLIENT_ID
+  transcribeTopic: APP_KAFKA_TRANSCRIBE_TOPIC
+  topicsPrefix: APP_KAFKA_TOPICS_PREFIX
+  bootstrapServers: APP_KAFKA_BOOTSTRAP_SERVERS

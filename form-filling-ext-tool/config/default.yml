@@ -1,0 +1,63 @@
+api:
+  url: https://app.workisround.eu/api/
+  links:
+    notification: notification-plugin/notification
+    notifications: notification-plugin/notifications
+    login: login
+    fileDownload: file-Storage/download-files
+    filePolishPDF: doc-gen/generate-polish-pdf/
+    businessSectors: business-sectors/posting-country
+
+auth:
+  name:
+  pass:
+
+targets:
+  Belgium:
+    url: https://meldingsplicht.socialsecurity.be/mp/faces*
+    entryPointUrl: https://meldingsplicht.socialsecurity.be/mp/faces/html/employeeDeclaration/stepEmployer
+    invalidEntryPoint: 'To complete the form using the plugin, you must go to the unfilled page: "Start declaration"'
+  Germany:
+    url: https://www.meldeportal-mindestlohn.de/Meldeportal/form*
+    invalidEntryPoint: 'To complete the form using the plugin, you must go to the unfilled page: "Notification by the employer"'
+  Bulgaria:
+    url: https://postedworkers.gli.government.bg/en/system/declaration*
+    entryPointUrl: https://postedworkers.gli.government.bg/en/system/declaration-secondment/
+    invalidEntryPoint: 'To complete the form using the plugin, you must go to the unfilled page: "Declaration for posting of workers"'
+  Netherlands:
+    url: https://meldloket.postedworkers.nl/runtime/server/session/*
+    invalidEntryPoint: 'To complete the form using the plugin, you must go to the unfilled page: "New Notification"'
+  Austria:
+    url: https://www4.formularservice.gv.at/formularserver/user/formular.aspx*
+  Portugal:
+    url: https://portal.act.gov.pt/Pages/TrabalhadoresParaPortugal.aspx*
+  Sweden:
+    url: https://www.av.se/en/work-environment-work-and-inspections/e-services-and-forms/report-a-posting/*
+    invalidEntryPoint: 'To complete the form using the plugin, you must go to the unfilled page: "New Report"'
+  CzechRepublic:
+    url: https://www.mpsv.cz/fas/formservice/filler.open?DocID=*
+    invalidEntryPoint: 'To complete the form using the plugin, you must go to the unfilled page: "ON-LINE FORM"'
+  Finland:
+    url: https://asiointipalvelu.ahtp.fi/forms/2627047*
+  Slovenia:
+    url: https://www.ess.gov.si/en/employers/recruit-in-europe-eures/posting-workers-from-eu-to-slovenia*
+  Lithuania:
+    url: https://www.vdi.lt/Komandiruotes/EN_form_main.aspx?ID_komandiruote_darbdavys_EN=627
+  Switzerland:
+    url: https://meweb.admin.ch/meldeverfahren/*
+  Hungary:
+    url: http://www.ommf.gov.hu/index.php?akt_menu=552*
+  Malta:
+    url: https://workflow.gov.mt/runtimepublic/runtime/form/notificationposterworker%20v2*
+  Slovakia:
+    url: https://www.ip.gov.sk/app/posting/form?language=en*
+  Poland:
+    url: https://www.biznes.gov.pl/en/e-uslugi/00_1328_00*
+  France:
+    url: https://www.sipsi.travail.gouv.fr/*
+    entryPointUrl: https://www.sipsi.travail.gouv.fr/dpd/new/3/
+    invalidEntryPoint:
+  Denmark:
+    url: https://erst.virk.dk/rut3/tjenesteydelse*
+    entryPointUrl: https://erst.virk.dk/rut3/tjenesteydelse/virksomhed
+    invalidEntryPoint: 'To complete the form using the plugin, you must go to the unfilled page: "Register new"'

@@ -1,0 +1,6 @@
+{
+  "name": "base-box",
+  "main": "index.js",
+  "chromium-args": "--disable-gpu --autoplay-policy=no-user-gesture-required --no-discard-tabs --log-level=3",
+  "domain": "jigsawinteractive.com"
+}

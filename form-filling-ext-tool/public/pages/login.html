@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>WorkIsRound - Login</title>
+    <link rel="stylesheet" type="text/css" href="../libs/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../styles/application.css"/>
+  </head>
+  <body>
+    <div id="loadingBoard" class="loading-board display-none">
+      <div class="d-flex justify-content-center align-items-center">
+        <img src="../images/ripple.gif"/>
+      </div>
+    </div>
+
+    <div class="container">
+      <form id="loginForm">
+        <div class="d-flex align-items-end">
+          <img src="../images/logo.svg" class="logo" />
+          <strong class="build-version-box" id="build-version-box"></strong>
+        </div>
+        <h3 class="login-title-bar">
+          Sign In
+        </h3>
+        <div class="alert alert-success" id="info_alert"></div>
+        <div class="alert alert-danger" id="error_alert"></div>
+        <div class="form-group">
+          <label for="email" class="control-label">E-mail</label>
+          <input type="text" id="email" class="form-control"/>
+        </div>
+        <div class="form-group">
+          <label for="password" class="control-label">Password</label>
+          <input type="password" id="password" class="form-control"/>
+        </div>
+        <div id="loading">
+          <img src="../images/ripple.gif" />
+        </div>
+
+        <div class="form-group">
+          <button id="loginBtn" class="btn btn-primary btn-block loginBtn">
+            Login
+          </button>
+        </div>
+      </form>
+    </div>
+    
+    <script src="../libs/jquery-3.4.1.min.js"></script>
+    <script src="../libs/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../libs/jquery.noty.packaged.min.js"></script>
+    <script src="../libs/noty.bootstrap.js"></script>
+
+    <script type="module" src="../js/login.js"></script>
+  </body>
+</html>

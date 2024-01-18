@@ -1,0 +1,30 @@
+**/dist
+**/.rpt2_cache
+
+#Node
+**/npm-debug.log
+**/node_modules
+
+# Git and Docker
+**/Dockerfile*
+**/docker-compose*
+**/.dockerignore
+**/.git
+**/.gitignore
+**/README.md
+**/LICENSE
+**/.svn
+
+# IDEs and editors
+**/.vscode
+**/.idea
+**/.project
+**/.classpath
+**/.c9/
+**/*.launch
+**/.settings/
+**/*.sublime-workspace
+
+# System Files
+**/.DS_Store
+**/Thumbs.db

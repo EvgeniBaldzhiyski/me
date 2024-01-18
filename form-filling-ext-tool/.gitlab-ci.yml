@@ -1,0 +1,50 @@
+stages:
+  - test
+
+variables:
+  CHECK_BRANCH_NAME: 'test'
+  SYNC_BRANCH_NAME: 'develop'
+  CONFLICT_BRANCH_NAME: 'conflict-auto-merge-'
+  CONFLICT_BRANCH_TITLE: "[CONFLICT] Auto merge ${CHECK_BRANCH_NAME} in ${SYNC_BRANCH_NAME}"
+  CONFLICT_BRANCH_NAME_REGEXP: '/conflict-auto-merge-.*/'
+
+before_script:
+  - git config --global user.email "$GITLAB_USER_EMAIL"
+  - git config --global user.name "CI - Automate"
+  - git remote set-url origin https://gitlab-ci-token:$GITLAB_CI_TOKEN@$CI_SERVER_SHELL_SSH_HOST/$CI_PROJECT_PATH.git
+  - echo "$CI_COMMIT_BRANCH -> $CI_DEFAULT_BRANCH -- $GITLAB_USER_EMAIL:$GITLAB_USER_ID/ -> $CI_PIPELINE_SOURCE"
+
+auto-sync:
+  stage: test 
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CHECK_BRANCH_NAME
+  script:
+    - git fetch origin $SYNC_BRANCH_NAME
+    - git checkout origin/$SYNC_BRANCH_NAME
+    - git merge origin/$CHECK_BRANCH_NAME
+    - git push origin HEAD:$SYNC_BRANCH_NAME
+
+auto-sync-fail:
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CHECK_BRANCH_NAME
+  needs: ["auto-sync"]
+  when: on_failure 
+  script:
+    - BRANCH_NAME=${CONFLICT_BRANCH_NAME}$(date +%s)
+    - URL=https://${CI_SERVER_SHELL_SSH_HOST}/api/v4/projects/
+    - BODY="{\"project_id\":\"${CI_PROJECT_ID}\",\"source_branch\":\"${BRANCH_NAME}\",\"target_branch\":\"${SYNC_BRANCH_NAME}\",\"remove_source_branch\":true,\"force_remove_source_branch\":false,\"allow_collaboration\":true,\"subscribed\":true,\"title\":\"${CONFLICT_BRANCH_TITLE}\", \"description\":\"${CI_COMMIT_AUTHOR}\n\n${CI_COMMIT_SHA}\n\n\n${CI_COMMIT_MESSAGE//$'\n'/ }\"}"
+
+    - git checkout -b ${BRANCH_NAME} origin/$CHECK_BRANCH_NAME
+    - git push origin HEAD
+    - curl --location --request POST "${URL}${CI_PROJECT_ID}/merge_requests" --header "PRIVATE-TOKEN:$GITLAB_CI_TOKEN" --header 'Content-Type:application/json' --data-raw "$BODY"
+
+auto-sync-resolve:
+  stage: test
+  rules:
+    - if: $CI_COMMIT_BRANCH =~ $CONFLICT_BRANCH_NAME_REGEXP 
+  script:
+    - git fetch origin $SYNC_BRANCH_NAME
+    - git checkout origin/$SYNC_BRANCH_NAME
+    - git merge origin/$CI_COMMIT_BRANCH
+    - git push origin HEAD:$SYNC_BRANCH_NAME
+    - git push origin --delete $CI_COMMIT_BRANCH

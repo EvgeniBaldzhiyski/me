@@ -1,0 +1,15 @@
+# configuration for test mode
+service:
+  name: base-box
+  openTabTimeout: 0
+  logLevel: none
+
+  initializedEventTimeout: 5
+  appReadyEventTimeout: 10
+  connectionStateTimeout: 15
+  aliveEventTimeout: 30
+
+ssr:
+  maxLength: 0.006
+  ffmpegTimeout: 1
+  minVideoLength: 10
